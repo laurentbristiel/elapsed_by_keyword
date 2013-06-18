@@ -1,4 +1,6 @@
 elapsed_by_keyword
 ==================
 
-Robot Framework elapsed time by keyword
+Return the total time elapsed in every keyword on the standard output
+Only first level keywords are taken into account
+
