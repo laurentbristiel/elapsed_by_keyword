@@ -2,9 +2,8 @@ elapsed_by_keyword
 ==================
 
 Return the total time elapsed in every keyword on the standard output.
-This can be useful to work on the performance of a test porfolio.
 
-note: Only first level keywords are taken into account
+This can be useful to work on the performance of a test porfolio.
 
 Example: let's take this test case:
 
@@ -35,5 +34,5 @@ We can execute it with Robot Framework and then check the stats by keywords:
     Log:     /path/elapsed_by_keyword/log.html
     Report:  /path/elapsed_by_keyword/report.html
     [MBP]$ ./elapsed_by_keyword.py output.xml 
+    BuiltIn.Sleep 13003
     my sleep 5 seconds 10006
-    BuiltIn.Sleep 3003

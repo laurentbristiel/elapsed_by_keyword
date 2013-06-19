@@ -2,8 +2,9 @@
 
 """Usage: elapsed_by_keyword inpath 
 
-Return the total time elapsed in every keyword on the standard output
-Only first level keywords are taken into account
+Reads result of a test run from Robot output file
+and returns the list of all the keywords on the standard output
+sorted by the elapsed time in each keyword
 """
 
 import sys
@@ -14,7 +15,7 @@ class ExecutionKeywordStats(ResultVisitor):
     def __init__(self):
         self.elapsed_by_kw = {}
 
-    def visit_keyword(self, keyword):
+    def end_keyword(self, keyword):
         if keyword.name in self.elapsed_by_kw:
             self.elapsed_by_kw[keyword.name] = self.elapsed_by_kw[keyword.name] + keyword.elapsedtime
         else:
