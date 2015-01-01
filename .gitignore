@@ -2,4 +2,4 @@ log.html
 report.html
 *.xml
 *.txt
-
+.idea/
