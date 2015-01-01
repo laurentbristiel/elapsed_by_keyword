@@ -8,6 +8,7 @@ sorted by the elapsed time in each keyword
 """
 
 import sys
+import datetime
 from robot.api import ExecutionResult, ResultVisitor
 
 class ExecutionKeywordStats(ResultVisitor):
@@ -27,7 +28,7 @@ def stats_by_keywords(inpath):
     visitor = ExecutionKeywordStats()    
     result.visit(visitor)
     for kw in sorted(visitor.elapsed_by_kw, key=visitor.elapsed_by_kw.get, reverse=True):
-      print kw, visitor.elapsed_by_kw[kw]
+      print kw, str(datetime.timedelta(milliseconds=visitor.elapsed_by_kw[kw]))
 
 if __name__ == '__main__':
     try:
