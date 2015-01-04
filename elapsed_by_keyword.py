@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-"""Usage: elapsed_by_keyword inpath 
+"""Usage: elapsed_by_keyword path/to/output.xml 
 
 Reads result of a test run from Robot output file
-and returns the list of all the keywords on the standard output
-sorted by the elapsed time in each keyword
+and outputs "keyword elapsed_time"
+sorted by the elapsed time in each keyword.
 """
 
 import sys
@@ -22,9 +22,9 @@ class ExecutionKeywordStats(ResultVisitor):
         else:
             self.elapsed_by_kw[keyword.name] = keyword.elapsedtime
 
-def stats_by_keywords(inpath):
+def stats_by_keywords(path):
     
-    result = ExecutionResult(inpath)
+    result = ExecutionResult(path)
     visitor = ExecutionKeywordStats()    
     result.visit(visitor)
     for kw in sorted(visitor.elapsed_by_kw, key=visitor.elapsed_by_kw.get, reverse=True):
