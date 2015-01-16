@@ -28,7 +28,7 @@ def stats_by_keywords(path):
     visitor = ExecutionKeywordStats()    
     result.visit(visitor)
     for kw in sorted(visitor.elapsed_by_kw, key=visitor.elapsed_by_kw.get, reverse=True):
-      print kw, str(datetime.timedelta(milliseconds=visitor.elapsed_by_kw[kw]))
+      print kw, str(datetime.timedelta(milliseconds=visitor.elapsed_by_kw[kw]))[:-7]
 
 if __name__ == '__main__':
     try:
