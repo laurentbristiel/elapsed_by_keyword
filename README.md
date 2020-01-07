@@ -20,7 +20,7 @@ For example, let's take this test case:
 
 We can execute it with Robot Framework and then check the stats by keywords:
     
-    $ pybot tc.txt 
+    $ robot tc.txt 
     ==============================================================================
     Tc                                                                            
     ==============================================================================
