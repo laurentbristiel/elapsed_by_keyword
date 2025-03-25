@@ -1,11 +1,16 @@
-elapsed_by_keyword
-==================
+# ⏱️ `elapsed_by_keyword`
 
-Return the total time elapsed and occurrence of every keyword on the standard output.
+**A small CLI tool to extract and analyze keyword performance from Robot Framework output files.**
 
-This can be useful to work on the performance of a test porfolio.
+This script parses a Robot Framework `output.xml` file and displays the **total elapsed time** and **number of calls** for each keyword used in the test suite sorted by execution time.
 
-For example, let's take this test case:
+It’s a simple way to **identify performance bottlenecks** in your test portfolio.
+
+---
+
+## Example
+
+Let’s say you have the following Robot test case:
 
     *** Test Cases ***
     My Test
@@ -18,22 +23,28 @@ For example, let's take this test case:
     my sleep 5 seconds    
         sleep  5
 
-We can execute it with Robot Framework and then check the stats by keywords:
-    
-    $ robot tc.txt 
-    ==============================================================================
-    Tc                                                                            
-    ==============================================================================
-    My Test                                                               | PASS |
-    ------------------------------------------------------------------------------
-    Tc                                                                    | PASS |
-    1 critical test, 1 passed, 0 failed
-    1 test total, 1 passed, 0 failed
-    ==============================================================================
-    Output:  /path/elapsed_by_keyword/output.xml
-    Log:     /path/elapsed_by_keyword/log.html
-    Report:  /path/elapsed_by_keyword/report.html
-    
-    $ ./elapsed_by_keyword.py output.xml 
-    BuiltIn.Sleep    0:00:13    4
-    my sleep 5 seconds    0:00:10    2
+You execute it with Robot Framework:
+```
+$ robot tc.robot 
+==============================================================================
+Tc
+==============================================================================
+My Test                                                               | PASS |
+------------------------------------------------------------------------------
+Tc                                                                    | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+Output:  /path/to/output.xml
+Log:     /path/to/log.html
+Report:  /path/to/report.html
+```
+
+And then analyze keyword performance:
+```
++----------------------------------------+--------------------+------------+
+| Keyword Name                           | Total Elapsed Time | Nb of Calls|
++========================================+====================+============+
+| Sleep                                  |         0:00:13.00 |     4      |
+| My Sleep 5 Seconds                     |         0:00:10.00 |     2      |
++----------------------------------------+--------------------+------------+
+```
